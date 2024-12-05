@@ -1,11 +1,10 @@
 package ggml
 
-// #cgo CFLAGS: -std=c11
-// #cgo CXXFLAGS: -std=c++11
-// #cgo CPPFLAGS: -DNDEBUG
+// #cgo CPPFLAGS: -I${SRCDIR}/ggml/include
 // #include <stdlib.h>
 // #include <stdint.h>
 // #include "ggml.h"
+// #include "ggml-cpu.h"
 // #include "ggml-backend.h"
 import "C"
 
@@ -22,6 +21,9 @@ import (
 	"github.com/ollama/ollama/format"
 	"github.com/ollama/ollama/fs/ggml"
 	"github.com/ollama/ollama/ml"
+
+	_ "github.com/ollama/ollama/ml/backend/ggml/ggml"
+	_ "github.com/ollama/ollama/ml/backend/ggml/ggml/ggml-cpu"
 )
 
 type Backend struct {
